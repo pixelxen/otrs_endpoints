@@ -12,10 +12,10 @@ app = Flask(__name__)
 from pwd import getpwnam
 try:
     otrs_uid = getpwnam('otrs').pw_uid
+    otrs_gid = getpwnam('otrs').pw_gid
 except KeyError:
     print 'User OTRS is not found in the system. Aborting.'
     quit()
-otrs_gid = getpwnam('otrs').pw_gid
 
 # Change gid in subprocess
 def demote(user_uid, user_gid):
